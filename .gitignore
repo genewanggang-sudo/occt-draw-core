@@ -1,0 +1,35 @@
+# CMake build directories
+/build/
+/out/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+DartConfiguration.tcl
+Testing/
+
+# Visual Studio generated files
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.dir/
+*.recipe
+*.tlog
+*.lastbuildstate
+*.ilk
+*.pdb
+*.idb
+*.obj
+*.lib
+*.dll
+*.exe
+*.exp
+
+# Visual Studio workspace folders
+.vs/
+x64/
+Debug/
+Release/
