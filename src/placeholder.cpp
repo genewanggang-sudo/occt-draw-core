@@ -6,4 +6,8 @@ const char* project_name() {
   return BuildInfo::kProjectName;
 }
 
+int version_major() {
+  return BuildInfo::kVersionMajor;
+}
+
 }  // namespace occt_draw_core

@@ -13,10 +13,19 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-include(CTest)
+option(OCCT_DRAW_CORE_ENABLE_TESTING "Enable test targets and CTest integration" OFF)
+option(
+  OCCT_DRAW_CORE_ENABLE_WASM
+  "Build the minimal WebAssembly export target when using Emscripten"
+  ON
+)
 
 add_subdirectory(src)
 
-if(BUILD_TESTING)
-  add_subdirectory(tests)
+if(OCCT_DRAW_CORE_ENABLE_TESTING)
+  include(CTest)
+
+  if(BUILD_TESTING)
+    add_subdirectory(tests)
+  endif()
 endif()

@@ -1,0 +1,53 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "windows-base",
+      "hidden": true,
+      "generator": "Visual Studio 17 2022",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_CXX_STANDARD": "17",
+        "OCCT_DRAW_CORE_ENABLE_TESTING": "OFF"
+      }
+    },
+    {
+      "name": "windows-debug",
+      "displayName": "Windows Debug",
+      "description": "Default native Visual Studio build for local development.",
+      "inherits": "windows-base"
+    },
+    {
+      "name": "windows-debug-tests",
+      "displayName": "Windows Debug With Tests",
+      "description": "Native Visual Studio build with test targets enabled.",
+      "inherits": "windows-base",
+      "cacheVariables": {
+        "OCCT_DRAW_CORE_ENABLE_TESTING": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows-debug",
+      "displayName": "Build Windows Debug",
+      "configurePreset": "windows-debug",
+      "configuration": "Debug"
+    },
+    {
+      "name": "windows-debug-tests",
+      "displayName": "Build Windows Debug With Tests",
+      "configurePreset": "windows-debug-tests",
+      "configuration": "Debug"
+    }
+  ]
+}
