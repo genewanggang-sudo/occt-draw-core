@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build:native": "cmake --build --preset windows-debug",
-    "build:wasm": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/build-wasm.ps1"
+    "run:demo": "build\\windows-debug\\apps\\cad_kernel_demo\\Debug\\cad_kernel_demo.exe",
+    "build:wasm": "build-wasm.cmd"
   }
 }

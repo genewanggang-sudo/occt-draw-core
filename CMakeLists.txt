@@ -22,6 +22,10 @@ option(
 
 add_subdirectory(src)
 
+if(NOT EMSCRIPTEN)
+  add_subdirectory(apps/cad_kernel_demo)
+endif()
+
 if(OCCT_DRAW_CORE_ENABLE_TESTING)
   include(CTest)
 

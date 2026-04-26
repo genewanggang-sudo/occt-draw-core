@@ -1,6 +1,7 @@
 # CMake build directories
 /build/
 /build-*/
+/dist/
 /out/
 
 # CMake generated files

@@ -1,24 +1,83 @@
 # occt-draw-core
 
-三维 CAD 几何内核工程，基于 C++ / OCCT，目标是同时支持本地 Visual Studio 开发和 WebAssembly 输出。
+三维 CAD 几何内核项目。C++ 代码在 Visual Studio 2022 里开发和调试，Wasm 文件用于交给前端加载。
 
-## 本地开发
+## 开发 C++
 
-1. 用 Visual Studio 打开仓库目录：`D:\work\occt-draw-core`
-2. 选择配置：`windows-debug`
-3. 点击“生成”或运行：`npm run build:native`
+用 Visual Studio 2022 打开仓库文件夹：
 
-当前还没有可以运行的程序，所以暂时不能直接按 F5。下一步会添加一个 demo 程序，用来在 Visual Studio 里启动和调试内核代码。
+```txt
+File -> Open -> Folder -> D:\work\occt-draw-core
+```
 
-## 构建 Wasm
+不要打开 `build` 目录里的 `.sln` 文件，那些是临时生成文件。
+
+打开后选择顶部配置：
+
+```txt
+Build Windows Debug
+```
+
+然后点击：
+
+```txt
+生成 -> 全部生成
+```
+
+## 调试 C++
+
+本地调试入口是：
+
+```txt
+cad_kernel_demo
+```
+
+在 Visual Studio 里选择 `cad_kernel_demo` 作为启动项，然后按 F5。
+
+这个 demo 会调用核心库里的代码，适合用来验证和调试几何内核。
+
+## 打包 Wasm
+
+Wasm 是给前端项目加载的文件。只有前端需要新的内核文件时，才需要打包。
+
+最简单的方式：
+
+```txt
+双击 build-wasm.cmd
+```
+
+也可以在 VS Code 终端或 PowerShell 里运行：
 
 ```powershell
 npm run build:wasm
 ```
 
-产物：
+输出文件：
 
 ```txt
-build/wasm-debug/src/cad-kernel.js
-build/wasm-debug/src/cad-kernel.wasm
+dist/wasm/cad-kernel.js
+dist/wasm/cad-kernel.wasm
+dist/wasm/cad-kernel.d.ts
 ```
+
+`cad-kernel.d.ts` 是给 `occt-draw-web` 使用的 TypeScript 类型说明。
+
+## 常用命令
+
+```powershell
+npm run build:native
+npm run run:demo
+npm run build:wasm
+```
+
+`npm run build:native`
+
+和 Visual Studio 里的“生成”作用类似。平时在 Visual Studio 里写代码时，可以不用手动运行它。
+
+`npm run run:demo`
+
+运行本地 demo 程序。主要用于在命令行里快速启动 demo；在 Visual Studio 里调试时，直接选择 `cad_kernel_demo` 后按 F5。
+
+`npm run build:wasm`
+
+打包前端要用的 `cad-kernel.js` 和 `cad-kernel.wasm`。
