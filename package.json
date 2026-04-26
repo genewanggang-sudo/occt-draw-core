@@ -1,0 +1,8 @@
+{
+  "name": "occt-draw-core",
+  "private": true,
+  "scripts": {
+    "build:native": "cmake --build --preset windows-debug",
+    "build:wasm": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/build-wasm.ps1"
+  }
+}

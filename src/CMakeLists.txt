@@ -16,27 +16,27 @@ target_compile_features(occt_draw_core
 )
 
 if(EMSCRIPTEN AND OCCT_DRAW_CORE_ENABLE_WASM)
-  add_executable(projection_engine wasm_entry.cpp)
+  add_executable(cad_kernel_wasm wasm_entry.cpp)
 
-  target_link_libraries(projection_engine
+  target_link_libraries(cad_kernel_wasm
     PRIVATE
       occt_draw_core
   )
 
-  target_include_directories(projection_engine
+  target_include_directories(cad_kernel_wasm
     PRIVATE
       "${PROJECT_SOURCE_DIR}/include"
   )
 
-  set_target_properties(projection_engine
+  set_target_properties(cad_kernel_wasm
     PROPERTIES
-      OUTPUT_NAME "projection-engine"
+      OUTPUT_NAME "cad-kernel"
       SUFFIX ".js"
   )
 
-  target_link_options(projection_engine
+  target_link_options(cad_kernel_wasm
     PRIVATE
-      "SHELL:-s EXPORTED_FUNCTIONS=['_occt_draw_core_project_name','_occt_draw_core_version_major']"
+      "SHELL:-s EXPORTED_FUNCTIONS=['_occt_draw_core_project_name','_occt_draw_core_engine_name','_occt_draw_core_version_major']"
       "SHELL:-s EXPORTED_RUNTIME_METHODS=['cwrap','UTF8ToString']"
       "SHELL:-s MODULARIZE=1"
       "SHELL:-s EXPORT_ES6=1"

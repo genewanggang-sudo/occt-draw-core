@@ -6,6 +6,10 @@ const char* project_name() {
   return BuildInfo::kProjectName;
 }
 
+const char* engine_name() {
+  return BuildInfo::kEngineName;
+}
+
 int version_major() {
   return BuildInfo::kVersionMajor;
 }

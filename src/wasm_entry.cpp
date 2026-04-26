@@ -6,6 +6,10 @@ const char* occt_draw_core_project_name() {
   return occt_draw_core::project_name();
 }
 
+const char* occt_draw_core_engine_name() {
+  return occt_draw_core::engine_name();
+}
+
 int occt_draw_core_version_major() {
   return occt_draw_core::version_major();
 }

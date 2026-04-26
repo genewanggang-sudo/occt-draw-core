@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.20)
 project(
   occt_draw_core
   VERSION 0.1.0
-  DESCRIPTION "C++ geometry core for OCCT-based 2D projection and WebAssembly export"
+  DESCRIPTION "C++ geometry kernel for OCCT-based 3D CAD and WebAssembly export"
   LANGUAGES CXX
 )
 
